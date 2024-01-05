@@ -79,8 +79,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      focusstack,     {.i = -1} },
 	{ MODKEY,                       XK_l,      focusstack,     {.i = +1} },
 	//RESIZE
-	{ MODKEY|ShiftMask,             XK_j,      setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_k,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_j,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_k,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
 
