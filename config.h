@@ -1,4 +1,5 @@
 #include "gaplessgrid.c"
+#include "centeredmaster.c"
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -46,10 +47,12 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "::",      gaplessgrid },
+	{ "#",      gaplessgrid },
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[C]",      centeredmaster },
+	{ "[Cf]",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -73,6 +76,8 @@ static const char *termcmd[]  = { "kitty", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
