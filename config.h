@@ -1,5 +1,6 @@
 #include "gaplessgrid.c"
 #include "centeredmaster.c"
+#include "fibonacci.c"
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -7,8 +8,8 @@ static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "JetBrainsMonoNL Nerd Font Mono:size=10" };
+static const char dmenufont[]       = "JetBrainsMonoNL Nerd Font Mono:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -22,6 +23,7 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"sh", "-c", "/home/tymek/bg.sh", NULL,
+	"sh", "-c", "/home/tymek/dwm_status.sh", "&", NULL,
 	NULL /* terminate */
 };
 
@@ -53,6 +55,8 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 	{ "[C]",      centeredmaster },
 	{ "[Cf]",      centeredfloatingmaster },
+	{ "[@]",      spiral },
+ 	{ "[\\]",      dwindle },
 };
 
 /* key definitions */
@@ -77,7 +81,9 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_s,      setlayout,      {.v = &layouts[6]} },
+	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[7]} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
