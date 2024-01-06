@@ -6,5 +6,5 @@ sudo make clean install
 if [[ -n $msg ]] ; then
     echo "jej"
     git add .
-    git commit -m $msg
+    git commit -m "$msg"
 fi
